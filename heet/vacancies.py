@@ -17,3 +17,11 @@ class Vacancy:
     @property
     def url(self):
         return self.__url
+
+    @property
+    def description(self):
+        return self.__description
+
+    @property
+    def payment(self):
+        return self.__payment

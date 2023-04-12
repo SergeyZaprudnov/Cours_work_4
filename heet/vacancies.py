@@ -9,3 +9,11 @@ class Vacancy:
         self.__url = url
         self.__description = description
         self.__payment = payment
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def url(self):
+        return self.__url

@@ -25,3 +25,10 @@ class Vacancy:
     @property
     def payment(self):
         return self.__payment
+
+    def __str__(self):
+        return f"Профессия: {self.__name}\n" \
+               f"url: {self.__url}\n" \
+               f"Требования: {self.__description}\n" \
+               f"Заработная плата: {self.__payment}"
+

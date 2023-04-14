@@ -11,7 +11,6 @@ class HeadHunterApi(Working):
         """Правила запроса"""
         url = 'https://api.hh.ru/vacancies'
         params = {"text": search_query, "page": 10, "per_page": 100, "area": 113, "only_with_salary": True}
-
         response = requests.get(url=url, params=params)
         if response.status_code == 200:
             vacancies = response.json()["items"]

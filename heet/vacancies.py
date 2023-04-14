@@ -32,3 +32,8 @@ class Vacancy:
                f"Требования: {self.__description}\n" \
                f"Заработная плата: {self.__payment}"
 
+    def __lt__(self, other):
+        return int(self.__payment) < int(other.__payment)
+
+    def __le__(self, other):
+        return int(self.__payment) <= int(other.__payment)

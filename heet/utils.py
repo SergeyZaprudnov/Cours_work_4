@@ -52,3 +52,8 @@ def filter_words():
     user_input = input('ВВедите ключевое слово: \n')
     return user_input
 
+def remove_tags(text):
+    """Удаляет тег"""
+    soup = BeautifulSoup(text, 'html.parser')
+    return soup.get_text
+

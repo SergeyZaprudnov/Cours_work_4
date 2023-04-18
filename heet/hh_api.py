@@ -1,6 +1,7 @@
 """Работа класса, для работы с ресурсом НН.ru"""
 import requests
 from heet.working_with_API import Working
+from heet.vacancies import Vacancy
 
 
 class HeadHunterApi(Working):

@@ -13,8 +13,8 @@ class SJAPI(Working):
 
     def get_vacancies(self, search_query: str):
         """Получение вакансий при помощи SJAPI"""
-        options = {'keyword': search_query, 'count': 100}
-        response = requests.get(self.url, headers=self.headers, options=options)
+        params = {'keyword': search_query, 'count': 100}
+        response = requests.get(self.url, headers=self.headers, params=params)
         if response.status_code == 200:
             data = response.json()
             vacancies_data = data['object']

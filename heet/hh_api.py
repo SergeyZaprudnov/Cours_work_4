@@ -6,7 +6,7 @@ from heet.vacancies import Vacancy
 
 class HeadHunterApi(Working):
     def __init__(self):
-        self.vacancies = []
+        self.url_hh = "https://api.hh.ru/vacancies"
 
     def get_vacancies(self, search_query: str):
         """Правила запроса"""

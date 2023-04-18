@@ -1,4 +1,4 @@
-from heet.utils import main
+from heet.utils import user_interaction
 
 if __name__ == "__main__":
-    main()
+    user_interaction()

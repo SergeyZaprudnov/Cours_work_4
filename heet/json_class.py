@@ -5,9 +5,8 @@ import os
 
 
 class JsonSave(Save):
-    def __init__(self, filename):
-        self.filename = filename
-        self.vacancies = []
+    def __init__(self):
+        self.file_name: str = 'JSON.json'
 
     def dump_to_file(self, **kwargs):
         with open("data.json", "w", encoding='utf - 8') as outfile:

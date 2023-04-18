@@ -29,3 +29,14 @@ class SJAPI(Working):
             return vacancies
         else:
             return f'Error: {response.status_code}'
+
+    @staticmethod
+    def get_salary(vacancy, **kwargs):
+        if vacancy.get('payment_to') == 0:
+            salary = {'from': vacancy['payment_from'], 'currency': vacancy['currency']}
+        elif vacancy.get('payment_from') == 0:
+            salary = {'from': vacancy['payment_to'], 'currency': vacancy['currency']}
+        else:
+            salary = {'from': vacancy.get('payment_from', 0), 'to': vacancy.get('payment_to', 0),
+                      'currency': vacancy.get('currency', 'rub')}
+        return salary

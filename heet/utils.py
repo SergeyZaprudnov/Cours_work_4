@@ -1,8 +1,7 @@
 from heet.hh_api import HeadHunterApi
 from heet.json_class import JsonSave
 from heet.supjob_api import SJAPI
-from  bs4 import BeautifulSoup
-
+from bs4 import BeautifulSoup
 
 
 def user_interaction():
@@ -13,6 +12,7 @@ def user_interaction():
     salary_input = salary_sort()
     get_result(hh_vacancies, sj_vacancies, filter_word_input, salary_input)
 
+
 def choise_platform():
     """ Выбор платформы"""
     while True:
@@ -22,10 +22,27 @@ def choise_platform():
             hh_api = HeadHunterApi()
             return hh_api, None
         elif platform == '2':
-            print('Вы выбрали платформу Superjob.ru' )
+            print('Вы выбрали платформу Superjob.ru')
             sj_api = SJAPI()
             return sj_api, None
         else:
             print('Платформа не выбрана, попробуйте снова')
             continue
 
+
+def get_from_platfom(hh_api, sj_api):
+    """Получение данных"""
+    try:
+        search_quere = input('Введите запрос: ')
+        if hh_api:
+            hh_vacancies = hh_api.get_vacancies(search_quere)
+            return hh_vacancies, None
+        elif sj_api:
+            sj_vacancies = sj_api.get_vacancies(search_quere)
+            return sj_vacancies, None
+        if hh_api and sj_api:
+            hh_vacancies = hh_api.get_vacancies(search_quere)
+            sj_vacancies = sj_api.get_vacancies(search_quere)
+            return hh_vacancies, sj_vacancies
+    except:
+        print('Неверный запрос')

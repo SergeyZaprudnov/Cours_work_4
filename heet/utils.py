@@ -57,3 +57,18 @@ def remove_tags(text):
     soup = BeautifulSoup(text, 'html.parser')
     return soup.get_text
 
+def salary_sort():
+    """Сортировка по заработной плате"""
+    while True:
+        salary_min = input('Введите минимальную заработную плату в рублях: ')
+        if not salary_min.strip():
+            print('Неверный ввод')
+            return '0'
+        try:
+            salary_min = int(salary_min)
+            return salary_min
+        except ValueError:
+            print('Неверное значение')
+            return '0'
+
+

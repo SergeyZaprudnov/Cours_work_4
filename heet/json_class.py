@@ -36,12 +36,12 @@ class JsonSave(Save):
             salary = salary_input
             currency = ['руб', 'rur', 'RUR', 'rub']
 
-        if currency in ['руб', 'RUR', 'rub']
+        if currency in ['руб', 'RUR', 'rub']:
             currency = ['руб', 'rur', 'RUR', 'rub']
 
         for i in vacancy:
             try:
-                if int(i['salary']['from']) >= int(salary) and i ['salary']['cerrency'] in currency:
+                if int(i['salary']['from']) >= int(salary) and i['salary']['cerrency'] in currency:
                     vacancy_dict.append(i)
                 elif i['salary']['currency'] in ['USD', 'usd'] and int(i['salary']['from']) * 83 >= int(salary):
                     vacancy_dict.append(i)
@@ -50,3 +50,22 @@ class JsonSave(Save):
 
         with open(self.file_name, 'w', encoding='utf-8') as file:
             json.dump(vacancy_dict, file, ensure_ascii=False, indent=4)
+
+    def words_search(self, words_search):
+        """Поиск по словам"""
+        if not isinstance(words_search, str):
+            return "Error: запрос не строка"
+        if words_search == '':
+            with open(self.file_name, 'r', encoding='utf-8') as file:
+                vacancies = json.load(file)
+            return vacancies
+        else:
+            with open(self.file_name, 'r', encoding='utf -8') as file:
+                vacancies = json.load(file)
+            result = []
+            for vacancy in vacancies:
+                for words in words_search.split():
+                    if words.lower() in vacancy['description'].lower():
+                        result.append(vacancy)
+                        break
+                    return result

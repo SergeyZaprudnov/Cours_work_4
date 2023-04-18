@@ -1,7 +1,6 @@
 """Класс для работы с Json-вакансии"""
 import json
 from heet.save import Save
-import os
 
 
 class JsonSave(Save):

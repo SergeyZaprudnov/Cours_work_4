@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 
 def user_interaction():
-    """Общение\связь с пользователем"""
+    """Общение-связь с пользователем"""
     hh_api, sj_api = choice_platform()
     hh_vacancies, sj_vacancies = get_from_platform
     filter_word_input = filter_words()
@@ -88,6 +88,7 @@ def print_top_vacancies(final):
                 f"{final[i]['title']}{salary_text} Описание вакансии: {remove_tags(final[i]['description'])} Ссылка: {final[i]['url']}")
     else:
         print('Вакансий по запросу не найдено')
+
 
 def get_result(hh_vacancies, sj_vacancies, filter_word_input, salary_input):
     """ Результат поиска"""

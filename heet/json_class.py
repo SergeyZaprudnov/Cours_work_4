@@ -23,3 +23,30 @@ class JsonSave(Save):
         else:
             print('Нет вакансий')
 
+    def get_vacancies_salary(self, salary_input):
+        """Список вакансий с заданной заработной платой"""
+        with open(self.file_name, 'r', encoding='utf-8') as file:
+            vacancy = json.load(file)
+
+        vacancy_dict = []
+
+        try:
+            salary, currency = salary_input.split(' ')
+        except:
+            salary = salary_input
+            currency = ['руб', 'rur', 'RUR', 'rub']
+
+        if currency in ['руб', 'RUR', 'rub']
+            currency = ['руб', 'rur', 'RUR', 'rub']
+
+        for i in vacancy:
+            try:
+                if int(i['salary']['from']) >= int(salary) and i ['salary']['cerrency'] in currency:
+                    vacancy_dict.append(i)
+                elif i['salary']['currency'] in ['USD', 'usd'] and int(i['salary']['from']) * 83 >= int(salary):
+                    vacancy_dict.append(i)
+            except:
+                continue
+
+        with open(self.file_name, 'w', encoding='utf-8') as file:
+            json.dump(vacancy_dict, file, ensure_ascii=False, indent=4)

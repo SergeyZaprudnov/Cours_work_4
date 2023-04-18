@@ -69,3 +69,9 @@ class JsonSave(Save):
                         result.append(vacancy)
                         break
                     return result
+
+    def results_json(self):
+        """Итог"""
+        with open(self.file_name, 'r', encoding='utf-8') as file:
+            fin_result = json.load(file)
+        return fin_result

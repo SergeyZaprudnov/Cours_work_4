@@ -13,4 +13,19 @@ def user_interaction():
     salary_input = salary_sort()
     get_result(hh_vacancies, sj_vacancies, filter_word_input, salary_input)
 
+def choise_platform():
+    """ Выбор платформы"""
+    while True:
+        platform = input('Выбор платфоры (hh.ru 1, superjob.ru 2:')
+        if platform == '1':
+            print('Вы выбрали платформу HeadHunter.ru')
+            hh_api = HeadHunterApi()
+            return hh_api, None
+        elif platform == '2':
+            print('Вы выбрали платформу Superjob.ru' )
+            sj_api = SJAPI()
+            return sj_api, None
+        else:
+            print('Платформа не выбрана, попробуйте снова')
+            continue
 

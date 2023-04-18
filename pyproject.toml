@@ -8,6 +8,7 @@ authors = ["sergey <szaprudnov@hotmail.com>"]
 python = "^3.11"
 requests = "^2.28.2"
 bs4 = "^0.0.1"
+beautifulsoup4 = "^4.12.2"
 [tool.poetry.dev-dependencies]
 
 [build-system]

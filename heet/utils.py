@@ -46,3 +46,9 @@ def get_from_platfom(hh_api, sj_api):
             return hh_vacancies, sj_vacancies
     except:
         print('Неверный запрос')
+
+def filter_words():
+    """Фильтрация вакансий по словам"""
+    user_input = input('ВВедите ключевое слово: \n')
+    return user_input
+

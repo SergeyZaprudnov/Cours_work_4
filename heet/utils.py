@@ -47,15 +47,18 @@ def get_from_platfom(hh_api, sj_api):
     except:
         print('Неверный запрос')
 
+
 def filter_words():
     """Фильтрация вакансий по словам"""
     user_input = input('ВВедите ключевое слово: \n')
     return user_input
 
+
 def remove_tags(text):
     """Удаляет тег"""
     soup = BeautifulSoup(text, 'html.parser')
     return soup.get_text
+
 
 def salary_sort():
     """Сортировка по заработной плате"""
@@ -72,3 +75,16 @@ def salary_sort():
             return '0'
 
 
+def print_top_vacancies(final):
+    """Вывод ТОП вакансий"""
+    top = int(input('Введите количество вакансий: '))
+    if len(final) > 0:
+        for i in range(top):
+            if final[i]['salary']['from'] == 0:
+                salary_text = 'Заработная плата не указана'
+            else:
+                salary_text = f"Заработная плата: {final[i]['salary']['from']} рублей"
+            print(
+                f"{final[i]['title']}{salary_text} Описание вакансии: {remove_tags(final[i]['description'])} Ссылка: {final[i]['url']}")
+    else:
+        print('Вакансий по запросу не найдено')

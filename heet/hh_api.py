@@ -10,8 +10,8 @@ class HeadHunterApi(Working):
 
     def get_vacancies(self, search_query):
         """Правила запроса"""
-        options = {'text': search_query, 'per_page': 100, 'area': 113}
-        response = requests.get(self.url_hh, options=options)
+        params = {'text': search_query, 'per_page': 100, 'area': 113}
+        response = requests.get(self.url_hh, params=params)
         if response.status_code == 200:
             data = response.json()
             vacancies_data = data['items']

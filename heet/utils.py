@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 def user_interaction():
     """Общение-связь с пользователем"""
     hh_api, sj_api = choice_platform()
-    hh_vacancies, sj_vacancies = get_from_platform
+    hh_vacancies, sj_vacancies = get_from_platform(hh_api, sj_api)
     filter_word_input = filter_words()
     salary_input = salary_sort()
     get_result(hh_vacancies, sj_vacancies, filter_word_input, salary_input)

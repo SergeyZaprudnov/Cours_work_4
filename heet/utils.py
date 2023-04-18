@@ -88,3 +88,12 @@ def print_top_vacancies(final):
                 f"{final[i]['title']}{salary_text} Описание вакансии: {remove_tags(final[i]['description'])} Ссылка: {final[i]['url']}")
     else:
         print('Вакансий по запросу не найдено')
+
+def get_result(hh_vacancies, sj_vacancies, filter_word_input, salary_input):
+    """ Результат поиска"""
+    json_save = JsonSave()
+    json_save.save_file(headhunter=hh_vacancies, superjob=sj_vacancies)
+    json_save.words_search(filter_word_input)
+    json_save.get_vacancies_salary(salary_input)
+    final = json_save.results_json()
+    print_top_vacancies(final)

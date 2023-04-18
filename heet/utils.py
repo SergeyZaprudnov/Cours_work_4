@@ -13,7 +13,7 @@ def user_interaction():
     get_result(hh_vacancies, sj_vacancies, filter_word_input, salary_input)
 
 
-def choise_platform():
+def choice_platform():
     """ Выбор платформы"""
     while True:
         platform = input('Выбор платфоры (hh.ru 1, superjob.ru 2:')
@@ -30,7 +30,7 @@ def choise_platform():
             continue
 
 
-def get_from_platfom(hh_api, sj_api):
+def get_from_platform(hh_api, sj_api):
     """Получение данных"""
     try:
         search_quere = input('Введите запрос: ')

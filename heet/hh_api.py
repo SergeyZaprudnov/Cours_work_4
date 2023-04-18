@@ -8,17 +8,22 @@ class HeadHunterApi(Working):
     def __init__(self):
         self.url_hh = "https://api.hh.ru/vacancies"
 
-    def get_vacancies(self, search_query: str):
+    def get_vacancies(self, search_query):
         """Правила запроса"""
-        url = 'https://api.hh.ru/vacancies'
-        params = {"text": search_query, "page": 10, "per_page": 100, "area": 113, "only_with_salary": True}
-        response = requests.get(url=url, params=params)
+        options = {'text': search_query, 'per_page': 100, 'area': 113}
+        response = requests.get(self.url_hh, options = options)
         if response.status_code == 200:
-            vacancies = response.json()["items"]
-            for vacancy in vacancies:
-                self.vacancies.append(
-                    {'name': vacancy['name'], 'url': vacancy['url'], 'description': vacancy['snippet']['requirement'],
-                     'payment': vacancy['salary']})
-                return self.vacancies
-            else:
-                return f'Error: {response.status_code}'
+            data = response.json()
+            vacancies_data = data['items']
+            vacancies = []
+            for vacancy in vacancies_data:
+                title = vacancy['name']
+                salary = HeadHunterApi.get_salary(vacancy['salary'])
+                description = vacancy['snippet']['requirement']
+                url = vacancy['alternate_url']
+                vacancy = Vacancy(title, salary, description, url)
+                vacancies.append(vacancy)
+            return vacancies
+        else:
+            return f'Error: {response.status_code}'
+

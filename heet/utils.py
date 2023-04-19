@@ -24,7 +24,7 @@ def choice_platform():
         elif platform == '2':
             print('Вы выбрали платформу Superjob.ru')
             sj_api = SJAPI()
-            return sj_api, None
+            return None, sj_api
         else:
             print('Платформа не выбрана, попробуйте снова')
             continue
@@ -39,7 +39,7 @@ def get_from_platform(hh_api, sj_api):
             return hh_vacancies, None
         elif sj_api:
             sj_vacancies = sj_api.get_vacancies(search_quere)
-            return sj_vacancies, None
+            return None, sj_vacancies
         if hh_api and sj_api:
             hh_vacancies = hh_api.get_vacancies(search_quere)
             sj_vacancies = sj_api.get_vacancies(search_quere)
@@ -50,7 +50,7 @@ def get_from_platform(hh_api, sj_api):
 
 def filter_words():
     """Фильтрация вакансий по словам"""
-    user_input = input('ВВедите ключевое слово: \n')
+    user_input = input('Введите ключевое слово: \n')
     return user_input
 
 

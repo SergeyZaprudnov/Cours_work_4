@@ -7,8 +7,7 @@ from heet.vacancies import Vacancy
 
 class SJAPI(Working):
     def __init__(self):
-        self.api_key: str = os.getenv(
-            'v3.r.137499149.8c1d762937882aaaf420cc33193c0cb529fb3d52.f9c2bc6aca02598e4885ac4647ced9f6c4a7726b')
+        self.api_key = "v3.r.137499149.8c1d762937882aaaf420cc33193c0cb529fb3d52.f9c2bc6aca02598e4885ac4647ced9f6c4a7726b"
         self.headers = {'X-Api-App-ID': self.api_key}
         self.url = 'https://api.superjob.ru/2.0/vacancies/'
 
@@ -18,7 +17,7 @@ class SJAPI(Working):
         response = requests.get(self.url, headers=self.headers, params=params)
         if response.status_code == 200:
             data = response.json()
-            vacancies_data = data['object']
+            vacancies_data = data['objects']
             vacancies = []
             for vacancy in vacancies_data:
                 title = vacancy['profession']

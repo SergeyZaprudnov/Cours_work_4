@@ -33,7 +33,7 @@ def choice_platform():
 def get_from_platform(hh_api, sj_api):
     """Получение данных"""
     try:
-        search_quere = input('Введите запрос: ')
+        search_quere = input('Введите запрос для получения данных: ')
         if hh_api:
             hh_vacancies = hh_api.get_vacancies(search_quere)
             return hh_vacancies, None
@@ -50,7 +50,7 @@ def get_from_platform(hh_api, sj_api):
 
 def filter_words():
     """Фильтрация вакансий по словам"""
-    user_input = input('Введите ключевое слово: \n')
+    user_input = input('Введите ключевое слово для фильтрации данных: \n')
     return user_input
 
 

@@ -16,7 +16,7 @@ def user_interaction():
 def choice_platform():
     """ Выбор платформы"""
     while True:
-        platform = input('Выбор платфоры (hh.ru 1, superjob.ru 2:')
+        platform = input('Выбор платфоры hh.ru 1, superjob.ru 2:')
         if platform == '1':
             print('Вы выбрали платформу HeadHunter.ru')
             hh_api = HeadHunterApi()

@@ -16,7 +16,7 @@ def user_interaction():
 def choice_platform():
     """ Выбор платформы"""
     while True:
-        platform = input('Выбор платфоры (hh.ru 1, superjob.ru 2:')
+        platform = input('Выберите платформу нажатием цыфры \n1 - hh.ru, \n2 - superjob.ru\n')
         if platform == '1':
             print('Вы выбрали платформу HeadHunter.ru')
             hh_api = HeadHunterApi()
@@ -33,7 +33,7 @@ def choice_platform():
 def get_from_platform(hh_api, sj_api):
     """Получение данных"""
     try:
-        search_quere = input('Введите запрос: ')
+        search_quere = input('Введите поисковый запрос: \n')
         if hh_api:
             hh_vacancies = hh_api.get_vacancies(search_quere)
             return hh_vacancies, None
@@ -50,7 +50,7 @@ def get_from_platform(hh_api, sj_api):
 
 def filter_words():
     """Фильтрация вакансий по словам"""
-    user_input = input('Введите ключевое слово: \n')
+    user_input = input('Введите ключевое слово для фильтрации данных: \n')
     return user_input
 
 
@@ -63,7 +63,7 @@ def remove_tags(text):
 def salary_sort():
     """Сортировка по заработной плате"""
     while True:
-        salary_min = input('Введите минимальную заработную плату в рублях: ')
+        salary_min = input('Введите минимальную заработную плату в рублях: \n')
         if not salary_min.strip():
             print('Неверный ввод')
             return '0'
@@ -77,15 +77,20 @@ def salary_sort():
 
 def print_top_vacancies(final):
     """Вывод ТОП вакансий"""
-    top = int(input('Введите количество вакансий: '))
+    top = input('Введите количество вакансий: ')
+    if top == '':
+        top = len(final)
+    else:
+        top = int(top)
     if len(final) > 0:
-        for i in range(top):
+        for i in range(min(top, len(final))):
             if final[i]['salary']['from'] == 0:
                 salary_text = 'Заработная плата не указана'
             else:
                 salary_text = f"Заработная плата: {final[i]['salary']['from']} рублей"
             print(
-                f"{final[i]['title']}{salary_text} Описание вакансии: {remove_tags(final[i]['description'])} Ссылка: {final[i]['url']}")
+                f"{final[i]['title']} {salary_text} Описание вакансии: {remove_tags(final[i]['description'])} "
+                f"Ссылка: {final[i]['url']}\n")
     else:
         print('Вакансий по запросу не найдено')
 

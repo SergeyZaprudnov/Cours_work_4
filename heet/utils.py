@@ -44,13 +44,13 @@ def get_from_platform(hh_api, sj_api):
             hh_vacancies = hh_api.get_vacancies(search_quere)
             sj_vacancies = sj_api.get_vacancies(search_quere)
             return hh_vacancies, sj_vacancies
-    except:
+    except ValueError:
         print('Неверный запрос')
 
 
 def filter_words():
     """Фильтрация вакансий по словам"""
-    user_input = input('Введите ключевое слово для фильтрации данных: \n')
+    user_input = input('Введите ключевое слово для фильтрации данных: ')
     return user_input
 
 
@@ -85,7 +85,8 @@ def print_top_vacancies(final):
             else:
                 salary_text = f"Заработная плата: {final[i]['salary']['from']} рублей"
             print(
-                f"{final[i]['title']}{salary_text} Описание вакансии: {remove_tags(final[i]['description'])} Ссылка: {final[i]['url']}")
+                f"{final[i]['title']}{salary_text} Описание вакансии: {remove_tags(final[i]['description'])} "
+                f"Ссылка: {final[i]['url']}")
     else:
         print('Вакансий по запросу не найдено')
 

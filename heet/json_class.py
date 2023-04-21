@@ -40,11 +40,11 @@ class JsonSave(Save):
 
         for i in vacancy:
             try:
-                if int(i['salary', 'from']) >= int(salary) and i['salary', 'cerrency'] in currency:
+                if int(i['salary']['from']) >= int(salary) and i['salary'] in currency:
                     vacancy_dict.append(i)
-                elif i['salary', 'currency'] in ['USD', 'usd'] and int(i['salary', 'from']) * 83 >= int(salary):
+                elif i['salary']['currency'] in ['USD', 'usd'] and int(i['salary']['from']) * 83 >= int(salary):
                     vacancy_dict.append(i)
-            except:
+            except ValueError:
                 continue
 
         with open(self.file_name, 'w', encoding='utf-8') as file:

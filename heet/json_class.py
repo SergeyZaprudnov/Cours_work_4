@@ -67,7 +67,8 @@ class JsonSave(Save):
                     if words.lower() in vacancy['description'].lower():
                         result.append(vacancy)
                         break
-                    return result
+            with open(self.file_name, 'w', encoding='utf-8') as file:
+                json.dump(result, file, ensure_ascii=False, indent=4)
 
     def results_json(self):
         """Итог"""
